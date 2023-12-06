@@ -2,16 +2,20 @@
 
 short Cell::idGenerator = 0;
 
-Cell::Cell(const short& row, const short& col) : rateLife{ 0 }, row{ row }, col{ col }
+Cell::Cell(const short& row, const short& col) : cell{'x'}, rateLife{0}, row{row}, col{col}
 {
 	id = idGenerator++;
 }
 
 Cell::Cell(const short& row, const short& col, std::shared_ptr<Cell> tail) :
-	rateLife{ 0 }, row{ row }, col{ col }
+	cell{'x'}, rateLife{0}, row{ row }, col{ col }
 {
 	prevCell = tail;
 	id = idGenerator++;
+}
+
+char Cell::getCell() const {
+	return this->cell;
 }
 
 short Cell::getRate() const {
@@ -31,9 +35,9 @@ void Cell::setRate(const short& rateLife) {
 }
 
 void Cell::setRow(const short& row) {
-	this->row = row;
+	this->row += row;
 }
 
 void Cell::setCol(const short& col) {
-	this->col = col;
+	this->col += col;
 }

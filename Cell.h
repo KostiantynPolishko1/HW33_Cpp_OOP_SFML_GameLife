@@ -9,6 +9,7 @@
 class Cell
 {
 private:
+	char cell;
 	short rateLife;
 	short row;
 	short col;
@@ -22,6 +23,8 @@ public:
 	Cell(const short&, const short&, std::shared_ptr<Cell>);
 
 #pragma region getters
+	char getCell() const;
+
 	short getRate() const;
 
 	short getRow() const;
